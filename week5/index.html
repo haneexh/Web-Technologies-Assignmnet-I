@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Job Registration Form</title>
+
+<script>
+function validate()
+{
+    var una = document.getElementById("one");
+    var uname = una.value.trim();
+
+    var mail = document.getElementById("two");
+    var email = mail.value.trim();
+
+    var mn = document.getElementById("three");
+    var mobile = mn.value.trim();
+
+    var unre = /^[a-zA-Z]+[0-9a-zA-Z._]*$/;
+    var ere = /^[a-zA-Z]+([\._]?\w+)*@\w+([\._]?\w+)*(\.\w{2,3})+$/;
+    var mre = /^[6-9][0-9]{9}$/;
+
+    if(!unre.test(uname))
+    {
+        return error(una, "Invalid Name");
+    }
+
+    if(!ere.test(email))
+    {
+        return error(mail, "Invalid Email");
+    }
+
+    if(!mre.test(mobile))
+    {
+        return error(mn, "Invalid Contact Number");
+    }
+
+    alert("Registered Successfully");
+    return true;
+
+    function error(ele, msg)
+    {
+        alert(msg);
+        ele.style.border = "3px solid red";
+        ele.focus();
+        return false;
+    }
+}
+</script>
+
+</head>
+
+<body style="background-color:blueviolet;">
+<center>
+<h2>Job Registration Form</h2>
+
+<form onsubmit="return validate()">
+
+<b>Name:</b>
+<input type="text" id="one" placeholder="Enter your name">
+<br><br>
+
+<b>Email:</b>
+<input type="email" id="two" placeholder="Enter your email">
+<br><br>
+
+<b>Contact Number:</b>
+<input type="tel" id="three" placeholder="Enter your contact number">
+<br><br>
+
+<input type="submit" value="Register">
+
+</form>
+</center>
+</body>
+</html>
+<br><br>
+<h3 align="right">C.Haneesh Balaji<br>24881A1286</h3>
