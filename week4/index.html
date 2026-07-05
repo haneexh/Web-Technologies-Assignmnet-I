@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EMI Calculator</title>
+    </head>
+    <body>
+        <h1 style="color: aqua; text-align: center;">EMI Calculator</h1>
+        <style>
+            input[type="text"] {
+                width: 90%;
+                border:2px;
+                background-color: rgb(229, 130, 130);
+                padding: 20px;
+                margin: 10px;
+                font-size: 20px;
+            }
+            input[type="number"] {
+                width: 90%;
+                border:2px;
+                background-color: rgb(229, 130, 130);
+                padding: 20px;
+                margin: 10px;
+                font-size: 20px;
+            }
+            input[type="button"] {
+                width: 90%;
+                border:2px;
+                background-color: rgb(0, 171, 60);
+                padding: 20px;
+                margin: 10px;
+                font-size: 20px;
+            }
+        </style>
+        <form>
+            Name:<br><input type="text" placeholder="Enter your name"><br>
+            Occupation:<br><input type="text" placeholder="Enter your occupation"><br>
+            Loan Amount:<br><input type="number" id="amt" placeholder="Enter loan amount"><br>
+            Interest Rate:<br><input type="number" id="ir" placeholder="Enter interest rate"><br>
+            Loan Tenure (in years):<br><input type="number" id="tiy" placeholder="Enter loan tenure in years"><br>
+            <input type="button" value="Calculate EMI" onclick="calculateEMI()">
+        </form>
+        <h4 id="result"></h4>
+        <script>
+            function calculateEMI() {
+                var principal = Number(document.getElementById("amt").value);
+                var annualRate = Number(document.getElementById("ir").value);
+                var tenureYears = Number(document.getElementById("tiy").value);
+                var r = (annualRate / 12) / 100; 
+                var n = tenureYears * 12;        
+                var emi = (principal * r * Math.pow(1 + r, n)) /  (Math.pow(1 + r, n) - 1);
+                document.getElementById("result").innerHTML = "Monthly EMI: " + emi.toFixed(2);
+            }
+        </script>
+        <br><br>
+        <h2 align="right">C.Haneesh Balaji</h2>
+        <h2 align="right">24881A1286</h2>
+    </body>
+</html>
